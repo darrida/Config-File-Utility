@@ -17,7 +17,12 @@ import config_file_utility as ini
 ini.config_update(<file>, <section_name>, <section_option>, <new_value>)
 ```
 
-- Example Case
+- Response codes:
+  - 0 = Success
+  - 1 = File/section/option not found
+  - 2 = Update issue: Mismatch between valued passed in and value in confi file
+
+- Example Create or Update Case
 
 ```python
 import config_file_utility as ini
@@ -27,7 +32,7 @@ result = ini.config_update('new_config.ini', 'Section_1', 'Option_1', 'new value
 
 if result[0] == 0:          # 0 = Value recorded, no errors
     print(result[1])
-elif result[0] == 1:        # 0 = Value add or update was unsuccessful
+elif result[0] == 1 or result[0] == 2:        # 0 = Value add or update was unsuccessful
     print('Unsuccessful')
 ```
 
@@ -47,7 +52,7 @@ option_1 = new value 1
 result = ini.config_read(<file>, <existing_section>, <exiting_option>)
 ```
 
-- Example Case
+- Example Read Case
 
 ```python
 result = ini.config_read('new_config.ini', 'Section_1', 'Option_1')
