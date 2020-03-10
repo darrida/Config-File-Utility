@@ -5,7 +5,7 @@ Create / Update / Read flat files using two functions built from configparser.
 ## Setup
 
 - Download/clone this repository
-- Move the 'config_file_utility.py' your apps directory
+- Move the 'config_file_utility.py' your app directory
 
 ```python
 import config_file_utility as ini
