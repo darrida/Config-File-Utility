@@ -21,6 +21,12 @@ def config_update(file, section, option, value):
         config.set(section, option, value)
     config.write(cfgfile)
     cfgfile.close()
+    config.read(file)
+    if config.has_option(section, option) == True:
+        recorded_value = config.get(section, option)
+        return [0, f'[{file}] => [{section}] => [{option}] => {recorded_value}']
+    else:
+        return [1]
 
 
 def config_read(file, section, option):
@@ -39,4 +45,4 @@ def config_read(file, section, option):
     config.read(file)
     if config.has_option(section, option) == True:
         value = config.get(section, option)
-    return value
+        return value
