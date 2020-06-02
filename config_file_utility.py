@@ -20,11 +20,9 @@ def config_update(file, section, option, new_value):
     config = ConfigParser()
     config.read(file)
     cfgfile = open(file, 'w')
-    if config.has_section(section) == True:
-        config.set(section, option, new_value)
-    else:
+    if config.has_section(section) != True:
         config.add_section(section)
-        config.set(section, option, new_value)
+    config.set(section, option, new_value)
     config.write(cfgfile)
     cfgfile.close()
     config.read(file)
@@ -54,5 +52,4 @@ def config_read(file, section, option):
     config = ConfigParser()
     config.read(file)
     if config.has_option(section, option) == True:
-        value = config.get(section, option)
-        return value
+        return config.get(section, option)

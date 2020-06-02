@@ -5,7 +5,7 @@ result = ini.config_update('new_config.ini', 'Section_1', 'Option_1', 'new value
 
 if result == 0:
     print('UPDATE: Successful')
-elif result == 1 or result == 2:
+elif result in [1, 2]:
     print('UPDATE: Unsuccessful')
 
 result = ini.config_read('new_config.ini', 'Section_1', 'Option_1')
